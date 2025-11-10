@@ -1,0 +1,19 @@
+{
+  "name": "susantish-website",
+  "version": "1.0.0",
+  "description": "Susan Tish Christian Science Practitioner Website",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./website/styles.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./website/styles.css --watch",
+    "generate": "python3 generate_website_v5.py",
+    "build": "npm run generate && npm run build:css",
+    "dev": "npm run generate && npm run watch:css"
+  },
+  "keywords": ["tailwindcss", "website"],
+  "author": "Susan Tish",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
+

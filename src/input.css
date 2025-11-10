@@ -1,0 +1,584 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Screen reader only utility (for skip link) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Smooth scrolling for skip link */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus visible for better keyboard navigation */
+*:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+}
+
+/* Enhanced touch targets for mobile (WCAG 2.5.5) */
+@media (pointer: coarse) {
+    button,
+    a,
+    input[type="submit"],
+    input[type="button"],
+    input[type="reset"] {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Navigation links */
+    nav a {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Print styles for better printing experience */
+@media print {
+    /* Hide non-essential elements */
+    header,
+    footer,
+    nav,
+    .no-print,
+    video,
+    button:not([type="submit"]) {
+        display: none !important;
+    }
+    
+    /* Show all content */
+    body {
+        background: white;
+        color: black;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    /* Avoid page breaks inside elements */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+    
+    p, ul, ol {
+        page-break-inside: avoid;
+    }
+    
+    /* Add page breaks before main sections */
+    main {
+        page-break-before: always;
+    }
+    
+    /* Show URLs for links */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+    }
+    
+    /* Don't show URLs for internal links */
+    a[href^="#"]:after,
+    a[href^="/"]:after {
+        content: "";
+    }
+    
+    /* Ensure images don't overflow */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Better table printing */
+    table {
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    
+    /* Contact information styling */
+    .contact-info {
+        border: 2px solid #000;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    * {
+        border-color: currentColor !important;
+    }
+    
+    button,
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* =================================================================
+   DESIGN REFINEMENTS - Professional Polish
+   ================================================================= */
+
+/* Image loading skeleton/blur effect */
+img {
+    background: linear-gradient(90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+    background-size: 200% 100%;
+}
+
+img[loading="lazy"] {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loading skeleton animation for images */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+img:not([src]),
+img[src=""] {
+    animation: shimmer 2s infinite linear;
+}
+
+/* Enhanced card hover effects with lift and glow */
+.hover\:shadow-xl:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.04),
+                0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+/* Subtle gradient overlays for depth */
+.bg-gradient-to-br {
+    position: relative;
+}
+
+.bg-gradient-to-br::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.1), transparent);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Enhanced button interactions */
+button,
+a.inline-block {
+    position: relative;
+    overflow: hidden;
+}
+
+button::before,
+a.inline-block::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:active::before,
+a.inline-block:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Typography refinements */
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+    text-rendering: optimizeLegibility;
+}
+
+/* Enhanced link underlines */
+a {
+    text-decoration-skip-ink: auto;
+    text-underline-offset: 0.15em;
+}
+
+/* Subtle parallax effect on scroll (performance-friendly) */
+@media (prefers-reduced-motion: no-preference) {
+    .bg-gradient-to-br {
+        transition: transform 0.3s ease-out;
+    }
+}
+
+/* Enhanced focus states with smooth ring animation */
+*:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    animation: focusRing 0.3s ease-in-out;
+}
+
+@keyframes focusRing {
+    0% {
+        outline-offset: 0px;
+        outline-width: 0px;
+    }
+    100% {
+        outline-offset: 2px;
+        outline-width: 2px;
+    }
+}
+
+/* Glassmorphism effect for modern look */
+.backdrop-blur-sm {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Enhanced shadow depths */
+.shadow-sm {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05),
+                0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+/* Smooth scroll with offset for fixed header */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+    }
+}
+
+/* Loading state for forms */
+form.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+form.loading * {
+    cursor: wait;
+}
+
+/* Success/error message animations */
+.alert {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Enhanced gradient backgrounds with subtle animation */
+@media (prefers-reduced-motion: no-preference) {
+    .bg-gradient-to-r,
+    .bg-gradient-to-br {
+        background-size: 200% 200%;
+        animation: gradientShift 15s ease infinite;
+    }
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Card stack effect on hover */
+.hover\:shadow-xl {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced border styles */
+.border-l-4 {
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+/* Improved rounded corners hierarchy */
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.rounded-2xl {
+    border-radius: 1rem;
+}
+
+.rounded-3xl {
+    border-radius: 1.5rem;
+}
+
+/* Text selection styling */
+::selection {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: inherit;
+}
+
+::-moz-selection {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: inherit;
+}
+
+/* Smooth color transitions */
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+/* Override for elements that shouldn't transition */
+img,
+video,
+iframe {
+    transition: none;
+}
+
+/* Enhanced form inputs */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+    transition: all 0.2s ease;
+}
+
+input:focus:not([type="checkbox"]):not([type="radio"]),
+textarea:focus,
+select:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Loading spinner utility */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Subtle page transition effect */
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        animation: pageIn 0.5s ease-out;
+    }
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced icon animations */
+svg {
+    transition: transform 0.3s ease, fill 0.3s ease, stroke 0.3s ease;
+}
+
+a:hover svg,
+button:hover svg {
+    transform: scale(1.05);
+}
+
+/* Tooltip-style hover effects */
+[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    animation: tooltipFadeIn 0.2s ease-in forwards 0.5s;
+}
+
+@keyframes tooltipFadeIn {
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-4px);
+    }
+}
+
+/* Enhanced mobile menu animation */
+@media (prefers-reduced-motion: no-preference) {
+    #mobile-menu {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    #mobile-menu:not(.hidden) {
+        animation: slideDown 0.3s ease-out;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger animation for cards */
+@media (prefers-reduced-motion: no-preference) {
+    .grid > * {
+        animation: fadeInUp 0.6s ease-out backwards;
+    }
+    
+    .grid > *:nth-child(1) { animation-delay: 0.1s; }
+    .grid > *:nth-child(2) { animation-delay: 0.2s; }
+    .grid > *:nth-child(3) { animation-delay: 0.3s; }
+    .grid > *:nth-child(4) { animation-delay: 0.4s; }
+    .grid > *:nth-child(5) { animation-delay: 0.5s; }
+    .grid > *:nth-child(6) { animation-delay: 0.6s; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced video container */
+video {
+    will-change: opacity;
+}
+
+/* Improved header blur effect on scroll */
+header {
+    transition: all 0.3s ease;
+}
+
+/* Better form validation styling */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border-color: #10b981;
+}
+
+/* Enhanced CTA button styles */
+.bg-blue-600:hover,
+.bg-indigo-600:hover {
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+/* Smooth color transitions for badges */
+.bg-blue-600,
+.bg-indigo-600,
+.bg-purple-600 {
+    transition: all 0.3s ease;
+}
+
+/* Page scroll progress indicator (optional enhancement) */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    transform-origin: left;
+    transition: transform 0.1s ease-out;
+    z-index: 9999;
+}
+

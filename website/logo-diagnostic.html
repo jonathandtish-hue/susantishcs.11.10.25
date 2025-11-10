@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Diagnostic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #333;
+        }
+        .logo-container {
+            border: 3px dashed red;
+            padding: 10px;
+            margin: 10px 0;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Logo Diagnostic Tool</h1>
+    
+    <div class="section">
+        <h2>1. Direct Logo Link</h2>
+        <p>Click to view the logo file directly:</p>
+        <a href="susantish-logo.png" target="_blank" style="font-size: 20px; color: blue;">📷 View Logo File</a>
+    </div>
+    
+    <div class="section">
+        <h2>2. Logo with EXACT Header Styling</h2>
+        <div class="logo-container">
+            <a href="index.html" style="display: flex; align-items: center; opacity: 1; transition: opacity 0.3s;">
+                <img src="susantish-logo.png" alt="Susan Tish, Christian Science Practitioner" style="height: 48px; width: auto; max-height: 48px; object-fit: contain;">
+            </a>
+        </div>
+        <p><strong>Expected:</strong> Logo 48px tall, original colors</p>
+    </div>
+    
+    <div class="section" style="background: #1a1a1a; color: white;">
+        <h2>3. Logo with EXACT Footer Styling</h2>
+        <div class="logo-container" style="background: #1a1a1a; border-color: #666;">
+            <img src="susantish-logo.png" alt="Susan Tish" loading="lazy" style="height: 64px; width: auto; max-height: 64px; object-fit: contain; filter: brightness(0) invert(1); margin-bottom: 1rem;">
+        </div>
+        <p><strong>Expected:</strong> Logo 64px tall, inverted to white</p>
+    </div>
+    
+    <div class="section">
+        <h2>4. Browser Console Check</h2>
+        <p>Open your browser's Developer Tools (F12 or Cmd+Option+I) and check the Console tab for any errors loading the logo.</p>
+    </div>
+    
+    <div class="section">
+        <h2>5. Image Info</h2>
+        <p id="info">Loading image information...</p>
+    </div>
+    
+    <script>
+        // Check if logo loads
+        const img = new Image();
+        img.onload = function() {
+            document.getElementById('info').innerHTML = `
+                <strong style="color: green;">✓ Logo loaded successfully!</strong><br>
+                Natural Width: ${this.naturalWidth}px<br>
+                Natural Height: ${this.naturalHeight}px<br>
+                File Size: Loaded OK<br>
+                Status: <strong style="color: green;">WORKING</strong>
+            `;
+        };
+        img.onerror = function() {
+            document.getElementById('info').innerHTML = `
+                <strong style="color: red;">✗ Logo FAILED to load!</strong><br>
+                Error: Image could not be loaded<br>
+                Status: <strong style="color: red;">ERROR</strong>
+            `;
+        };
+        img.src = 'susantish-logo.png';
+    </script>
+    
+    <p style="margin-top: 40px;"><a href="index.html">← Back to Home</a></p>
+</body>
+</html>
+

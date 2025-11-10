@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .test-container {
+            margin-bottom: 40px;
+            border: 2px solid #ccc;
+            padding: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Susan Tish Logo Test Page</h1>
+    
+    <div class="test-container" style="background: white;">
+        <h2>1. Header Style (White Background, No Filters)</h2>
+        <img src="susantish-logo.png" alt="Logo" style="height: 48px; width: auto; max-height: 48px; object-fit: contain;">
+    </div>
+    
+    <div class="test-container" style="background: #1a1a1a;">
+        <h2 style="color: white;">2. Footer Style (Dark Background, Inverted)</h2>
+        <img src="susantish-logo.png" alt="Logo" style="height: 64px; width: auto; max-height: 64px; object-fit: contain; filter: brightness(0) invert(1);">
+    </div>
+    
+    <div class="test-container" style="background: #f0f0f0;">
+        <h2>3. Original Size (No Styling)</h2>
+        <img src="susantish-logo.png" alt="Logo" style="max-width: 100%; height: auto;">
+    </div>
+    
+    <div class="test-container" style="background: white; border: 5px solid red;">
+        <h2>4. With Red Border (To See Actual Bounds)</h2>
+        <img src="susantish-logo.png" alt="Logo" style="height: 48px; width: auto; border: 2px solid blue;">
+    </div>
+    
+    <div class="test-container" style="background: white;">
+        <h2>5. Larger Size (100px height)</h2>
+        <img src="susantish-logo.png" alt="Logo" style="height: 100px; width: auto;">
+    </div>
+    
+    <p><strong>Logo file info:</strong> 2864 x 678 pixels (4.2:1 aspect ratio)</p>
+    <p><a href="index.html">← Back to Home Page</a></p>
+</body>
+</html>
+
