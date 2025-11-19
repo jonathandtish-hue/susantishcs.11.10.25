@@ -9,11 +9,16 @@
     "build": "npm run generate && npm run build:css",
     "dev": "npm run generate && npm run watch:css"
   },
-  "keywords": ["tailwindcss", "website"],
+  "keywords": [
+    "tailwindcss",
+    "website"
+  ],
   "author": "Susan Tish",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.9.6"
   }
 }
-

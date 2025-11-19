@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import tokens from the original design */
+:root {
+  /* Warm, calming color palette */
+  --sage: 145 32% 48%;
+  --sage-light: 145 35% 92%;
+  --sage-dark: 145 40% 25%;
+  
+  --mint: 165 45% 65%;
+  --mint-light: 165 50% 95%;
+  
+  --warm-cream: 40 35% 96%;
+  --warm-sand: 38 30% 88%;
+  
+  --ocean: 200 45% 50%;
+  --ocean-light: 200 50% 95%;
+  
+  --text-primary: 215 25% 20%;
+  --text-muted: 215 15% 45%;
+  
+  /* Semantic tokens */
+  --primary: var(--sage);
+  --primary-light: var(--sage-light);
+  --primary-dark: var(--sage-dark);
+  
+  --accent: var(--mint);
+  --accent-light: var(--mint-light);
+  
+  --page-bg: var(--warm-cream);
+  --section-soft: var(--warm-sand);
+  
+  --muted: var(--text-muted);
+  --foreground: var(--text-primary);
+}
+
+@layer base {
+  body {
+    @apply bg-[hsl(var(--page-bg))] text-[hsl(var(--foreground))];
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .section-flow {
+    @apply py-16 md:py-24;
+  }
+  
+  .section-flow--sage {
+    @apply bg-[hsl(var(--sage-light))];
+  }
+  
+  .section-flow--clear {
+    @apply bg-transparent;
+  }
+  
+  .layout-shell {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16;
+  }
+  
+  .layout-shell--narrow {
+    @apply max-w-4xl;
+  }
+  
+  .layout-shell--wide {
+    @apply max-w-7xl;
+  }
+  
+  .layout-shell--edge {
+    @apply max-w-7xl mx-auto px-5 sm:px-8 md:px-10 lg:px-12 xl:px-16;
+  }
+  
+  .btn-gradient {
+    @apply px-6 py-3 bg-gradient-to-r from-[hsl(var(--sage))] to-[hsl(var(--mint))] text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300;
+  }
+  
+  .btn-outline {
+    @apply px-6 py-3 border-2 border-[hsl(var(--sage))] text-[hsl(var(--sage))] font-semibold rounded-xl hover:bg-[hsl(var(--sage))] hover:text-white transition-all duration-300;
+  }
+  
+  .site-header {
+    @apply bg-white/90 backdrop-blur-sm border-[hsl(var(--sage-light))];
+  }
+  
+  .site-rail {
+    @apply bg-gradient-to-b from-[hsl(var(--sage-light))] via-[hsl(var(--mint-light))] to-[hsl(var(--sage-light))];
+  }
+  
+  .nav-link {
+    @apply text-[hsl(var(--text-primary))] hover:text-[hsl(var(--sage))] font-medium;
+  }
+  
+  .logo-image {
+    @apply h-12 w-auto;
+  }
+  
+  .section-eyebrow {
+    @apply text-sm font-semibold text-[hsl(var(--sage))] uppercase tracking-wider mb-3;
+  }
+  
+  .text-primary {
+    @apply text-[hsl(var(--text-primary))];
+  }
+  
+  .text-muted {
+    @apply text-[hsl(var(--text-muted))];
+  }
+  
+  .bg-page {
+    @apply bg-[hsl(var(--page-bg))];
+  }
+  
+  .bg-section-soft {
+    @apply bg-[hsl(var(--section-soft))];
+  }
+  
+  .footer-gradient {
+    @apply bg-gradient-to-br from-[hsl(var(--sage-dark))] to-[hsl(var(--sage))];
+  }
+  
+  .soft-card {
+    @apply bg-white rounded-2xl;
+  }
+  
+  .shadow-soft {
+    @apply shadow-lg;
+  }
+  
+  .flow-card {
+    @apply bg-white p-6 rounded-xl;
+  }
+  
+  .flow-card--soft {
+    @apply bg-[hsl(var(--warm-sand))] p-6 rounded-xl;
+  }
+  
+  .flow-card--accent {
+    @apply bg-[hsl(var(--mint-light))] p-6 rounded-xl border-l-4 border-[hsl(var(--mint))];
+  }
+  
+  .flow-card__eyebrow {
+    @apply text-xs font-bold text-[hsl(var(--sage))] uppercase tracking-wider mb-2;
+  }
+  
+  .flow-card__title {
+    @apply text-xl font-bold text-[hsl(var(--text-primary))] mb-3;
+  }
+  
+  .flow-card__body {
+    @apply text-[hsl(var(--text-muted))] leading-relaxed;
+  }
+  
+  .flow-card__list {
+    @apply mt-4 space-y-2;
+  }
+  
+  .flow-card__bullet {
+    @apply text-[hsl(var(--sage))] font-bold mr-2;
+  }
+  
+  .pattern-shell {
+    @apply grid gap-8;
+  }
+  
+  .pattern-shell--split {
+    @apply md:grid-cols-2 items-center;
+  }
+  
+  .flow-grid {
+    @apply grid md:grid-cols-3 gap-6 mt-12;
+  }
+  
+  .section-intro {
+    @apply mb-12;
+  }
+  
+  .section-intro--left {
+    @apply text-left;
+  }
+  
+  .section-intro--narrow {
+    @apply max-w-2xl;
+  }
+  
+  .bg-gradient-brand {
+    @apply bg-gradient-to-r from-[hsl(var(--sage))] to-[hsl(var(--mint))];
+  }
+  
+  .fade-up {
+    @apply opacity-0 translate-y-4 animate-fade-in;
+  }
+  
+  .fade-delay-80 {
+    animation-delay: 80ms;
+  }
+  
+  .fade-delay-120 {
+    animation-delay: 120ms;
+  }
+  
+  .fade-delay-160 {
+    animation-delay: 160ms;
+  }
+  
+  .fade-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .fade-delay-240 {
+    animation-delay: 240ms;
+  }
+  
+  .flow-sidenote {
+    @apply bg-[hsl(var(--ocean-light))] border-l-4 border-[hsl(var(--ocean))] p-6 rounded-xl;
+  }
+  
+  .callout-banner {
+    @apply bg-white p-8 rounded-2xl shadow-lg;
+  }
+  
+  .callout-banner__title {
+    @apply text-2xl font-bold text-[hsl(var(--text-primary))] mb-4;
+  }
+  
+  .callout-banner__quote {
+    @apply text-lg italic text-[hsl(var(--sage))] mb-4;
+  }
+  
+  .callout-banner__aside {
+    @apply text-[hsl(var(--text-muted))];
+  }
+  
+  .badge-solid-sage {
+    @apply inline-block px-3 py-1 bg-[hsl(var(--sage))] text-white text-sm font-semibold rounded-full;
+  }
+  
+  .badge-solid-mint {
+    @apply inline-block px-3 py-1 bg-[hsl(var(--mint))] text-white text-sm font-semibold rounded-full;
+  }
+  
+  .section-pad--compact {
+    @apply py-12;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
