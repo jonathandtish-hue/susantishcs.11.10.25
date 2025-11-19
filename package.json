@@ -7,7 +7,8 @@
     "watch:css": "tailwindcss -i ./src/input.css -o ./website/styles.css --watch",
     "generate": "python3 generate_website_v5.py",
     "build": "npm run generate && npm run build:css",
-    "dev": "npm run generate && npm run watch:css"
+    "dev": "npm run generate && npm run watch:css",
+    "build:dev": "vite build --mode development"
   },
   "keywords": ["tailwindcss", "website"],
   "author": "Susan Tish",
