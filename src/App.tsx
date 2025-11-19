@@ -1,25 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Inspiration from "./pages/Inspiration";
-import Contact from "./pages/Contact";
-import Booking from "./pages/Booking";
-import SpiritualHealing from "./pages/SpiritualHealing";
-
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/inspiration" element={<Inspiration />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/booking" element={<Booking />} />
-        <Route path="/spiritual-healing" element={<SpiritualHealing />} />
-      </Routes>
-    </Router>
+    <div style={{ padding: '40px', backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
+      <h1 style={{ color: '#333', fontSize: '32px', marginBottom: '20px' }}>
+        Susan Tish - Christian Science Practitioner
+      </h1>
+      <p style={{ color: '#666', fontSize: '18px' }}>
+        React is working! The site is loading correctly.
+      </p>
+    </div>
   );
 }
 
