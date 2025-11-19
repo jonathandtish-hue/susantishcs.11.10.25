@@ -10,11 +10,16 @@
     "dev": "npm run generate && npm run watch:css",
     "build:dev": "vite build --mode development"
   },
-  "keywords": ["tailwindcss", "website"],
+  "keywords": [
+    "tailwindcss",
+    "website"
+  ],
   "author": "Susan Tish",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.9.6"
   }
 }
-
