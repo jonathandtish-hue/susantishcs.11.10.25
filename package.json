@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Susan Tish Christian Science Practitioner Website",
   "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
     "build:css": "tailwindcss -i ./src/input.css -o ./website/styles.css --minify",
     "watch:css": "tailwindcss -i ./src/input.css -o ./website/styles.css --watch",
     "generate": "python3 generate_website_v5.py",
-    "build": "npm run generate && npm run build:css",
-    "dev": "npm run generate && npm run watch:css",
-    "build:dev": "vite build --mode development"
+    "build:static": "npm run generate && npm run build:css",
+    "dev:static": "npm run generate && npm run watch:css"
   },
   "keywords": [
     "tailwindcss",
